@@ -1,4 +1,4 @@
-# Habit-manager
+# Pomodorro app
 
 ## ---IN PROGRESS---
 
