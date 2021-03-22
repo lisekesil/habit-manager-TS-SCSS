@@ -4,24 +4,50 @@
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+         rel="stylesheet"
+      />
       <title>pomodorro</title>
    </head>
    <body>
-      <form>
-         <div>
-            <input type="radio" id="25m" value="7" name="time" checked />
-            <label for="25m">25</label>
-         </div>
-         <div>
-            <input type="radio" id="20m" value="20" name="time" />
-            <label for="20m">20</label>
-         </div>
-         <button class="startBtn" type="submit">Start</button>
-      </form>
-      <button class="pauseBtn" disabled>Pause</button>
-      <button class="resetBtn" disabled>Reset</button>
+      <section class="left container">
+         <h1 class="left__header">Pomodorro</h1>
 
-      <span class="counter"></span>
+         <form class="form">
+            <span class="form__options-label">session time:</span>
+            <div class="form__options">
+               <div class="form__option">
+                  <input type="radio" id="25m" value="7" name="time" checked />
+                  <label for="25m">25 min</label>
+               </div>
+               <div class="form__option">
+                  <input type="radio" id="20m" value="20" name="time" />
+                  <label for="20m">20 min</label>
+               </div>
+            </div>
+            <span class="form__options-label">short break:</span>
+            <div class="form__options">
+               <div class="form__option">
+                  <input type="radio" id="3m" value="7" name="short-break" checked />
+                  <label for="3m">3 min</label>
+               </div>
+               <div class="form__option">
+                  <input type="radio" id="5m" value="20" name="short-break" />
+                  <label for="5m">5 min</label>
+               </div>
+            </div>
+            <button class="form__button" id="startBtn" type="submit">Start</button>
+         </form>
+      </section>
+      <section class="right container">
+         <div class="right__wrapper">
+            <span class="right__counter" id="counter">00:00</span>
+            <button id="pauseBtn" disabled>Pause</button>
+            <button id="resetBtn" disabled>Reset</button>
+         </div>
+      </section>
       <script src="index.js"></script>
    </body>
 </html>

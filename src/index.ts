@@ -17,10 +17,10 @@ class App {
    constructor() {
       this.ui = {
          form: document.querySelector('form')!,
-         startBtn: document.querySelector('.startBtn')!,
-         pauseBtn: document.querySelector('.pauseBtn')!,
-         resetBtn: document.querySelector('.resetBtn')!,
-         counter: document.querySelector('.counter')!,
+         startBtn: document.querySelector('#startBtn')!,
+         pauseBtn: document.querySelector('#pauseBtn')!,
+         resetBtn: document.querySelector('#resetBtn')!,
+         counter: document.querySelector('#counter')!,
       };
 
       this.isPomodorroInProgress = false;
@@ -67,7 +67,7 @@ class App {
    handleResetClick() {
       this.switchDisabledButtons();
       clearInterval(this.interval);
-      this.ui.counter.innerHTML = '';
+      this.ui.counter.innerHTML = '00:00';
    }
 
    switchDisabledButtons() {
