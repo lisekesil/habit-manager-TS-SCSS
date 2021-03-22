@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pomodorro</title>
-  </head>
-  <body>
-    Co by tu kliknąć...
-    <script src="index.js"></script>
-  </body>
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>pomodorro</title>
+   </head>
+   <body>
+      <form>
+         <div>
+            <input type="radio" id="25m" value="7" name="time" checked />
+            <label for="25m">25</label>
+         </div>
+         <div>
+            <input type="radio" id="20m" value="20" name="time" />
+            <label for="20m">20</label>
+         </div>
+         <button class="startBtn" type="submit">Start</button>
+      </form>
+      <button class="pauseBtn" disabled>Pause</button>
+      <button class="resetBtn" disabled>Reset</button>
+
+      <span class="counter"></span>
+      <script src="index.js"></script>
+   </body>
 </html>
