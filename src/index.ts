@@ -8,7 +8,10 @@ class App {
       startBtn: HTMLButtonElement;
       pauseBtn: HTMLButtonElement;
       resetBtn: HTMLButtonElement;
-      counter: HTMLSpanElement;
+      continueBtn: HTMLButtonElement;
+      minutes: HTMLSpanElement;
+      seconds: HTMLSpanElement;
+      modal: HTMLElement;
    };
    interval: number;
    isPomodorroInProgress: boolean;
@@ -20,7 +23,10 @@ class App {
          startBtn: document.querySelector('#startBtn')!,
          pauseBtn: document.querySelector('#pauseBtn')!,
          resetBtn: document.querySelector('#resetBtn')!,
-         counter: document.querySelector('#counter')!,
+         continueBtn: document.querySelector('#continueBtn')!,
+         minutes: document.querySelector('#minutes')!,
+         seconds: document.querySelector('#seconds')!,
+         modal: document.querySelector('#modal')!,
       };
 
       this.isPomodorroInProgress = false;
@@ -35,13 +41,43 @@ class App {
       this.ui.form.addEventListener('submit', (e) => this.handleStartClick(e));
       this.ui.pauseBtn.addEventListener('click', () => this.handlePauseClick());
       this.ui.resetBtn.addEventListener('click', () => this.handleResetClick());
+      this.ui.continueBtn.addEventListener('click', () => this.handleContinueClick());
+   }
+
+   toggleModal() {
+      this.pauseUnpauseInterval();
+      this.ui.modal.classList.toggle('hide');
+   }
+
+   showTimer() {
+      const min =
+         this.pomodorro.currentSeconds > 59 ? Math.floor(this.pomodorro.currentSeconds / 60) : 0;
+
+      const sec = min === 0 ? this.pomodorro.currentSeconds : this.pomodorro.currentSeconds % 60;
+
+      this.ui.minutes.innerHTML = min > 9 ? min.toString() : `0${min}`;
+      this.ui.seconds.innerHTML = sec > 9 ? sec.toString() : `0${sec}`;
    }
 
    startInterval() {
+      this.showTimer();
       this.interval = window.setInterval(() => {
-         this.ui.counter.innerHTML = this.pomodorro.currentSeconds.toString();
+         if (this.pomodorro.currentSeconds === 0) {
+            this.toggleModal();
+         }
          this.pomodorro.decrementSeconds();
+         this.showTimer();
       }, 1000);
+   }
+
+   pauseUnpauseInterval() {
+      this.isPaused = !this.isPaused;
+
+      if (this.isPaused) {
+         clearInterval(this.interval);
+      } else {
+         this.startInterval();
+      }
    }
 
    handleStartClick(e: Event) {
@@ -53,21 +89,20 @@ class App {
    }
 
    handlePauseClick() {
-      this.isPaused = !this.isPaused;
-
-      if (this.isPaused) {
-         this.ui.pauseBtn.innerHTML = 'Unpause';
-         clearInterval(this.interval);
-      } else {
-         this.ui.pauseBtn.innerHTML = 'Pause';
-         this.startInterval();
-      }
+      this.pauseUnpauseInterval();
+      this.ui.pauseBtn.innerHTML = this.isPaused ? 'Unpause' : 'Pause';
    }
 
    handleResetClick() {
       this.switchDisabledButtons();
       clearInterval(this.interval);
-      this.ui.counter.innerHTML = '00:00';
+      this.ui.minutes.innerHTML = '00';
+      this.ui.seconds.innerHTML = '00';
+   }
+
+   handleContinueClick() {
+      // this.pauseUnpauseInterval();
+      this.toggleModal();
    }
 
    switchDisabledButtons() {

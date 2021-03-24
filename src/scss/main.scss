@@ -1,4 +1,7 @@
 @import 'variables';
+@import 'form';
+@import 'left';
+@import 'right';
 
 * {
    margin: 0;
@@ -12,69 +15,42 @@ body {
    display: flex;
 }
 
+.hide {
+   display: none;
+}
+
 .container {
    position: relative;
    width: 50vw;
    height: 100vh;
 }
 
-.left {
-   background-color: #971515;
-   color: $primary-color;
-
-   &__header {
-      text-transform: uppercase;
-      font-size: 64px;
-      text-align: center;
-      padding: 20px;
-   }
-}
-
-.form {
+.right-modal {
    position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   padding: 20px;
-   border: 1px solid $primary-color;
-
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-
-   &__options-label {
-      align-self: flex-start;
-   }
-
-   &__options {
-      width: 100%;
-      display: flex;
-      // justify-content: space-between;
-      padding-bottom: 10px;
-   }
-
-   &__option {
-      margin: 0 10px;
-   }
-
-   &__button {
-      padding: 5px 10px;
-   }
-}
-
-.right {
-   color: #971515;
+   background-color: rgba(0, 0, 0, 0.93);
+   top: 0;
+   right: 0;
+   color: #fff;
 
    &__wrapper {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
    }
 
-   &__counter {
-      font-size: 150px;
+   &__continue {
+      font-size: 100px;
+   }
+
+   &__button {
+      @include btn(#fff);
+
+      margin-top: 30px;
    }
 }

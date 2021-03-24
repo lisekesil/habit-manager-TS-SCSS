@@ -19,12 +19,12 @@
             <span class="form__options-label">session time:</span>
             <div class="form__options">
                <div class="form__option">
-                  <input type="radio" id="25m" value="7" name="time" checked />
-                  <label for="25m">25 min</label>
+                  <input type="radio" id="20m" value="20" name="time" checked />
+                  <label for="20m">20 min</label>
                </div>
                <div class="form__option">
-                  <input type="radio" id="20m" value="20" name="time" />
-                  <label for="20m">20 min</label>
+                  <input type="radio" id="25m" value="315" name="time" />
+                  <label for="25m">25 min</label>
                </div>
             </div>
             <span class="form__options-label">short break:</span>
@@ -38,14 +38,35 @@
                   <label for="5m">5 min</label>
                </div>
             </div>
+            <span class="form__options-label">long break:</span>
+            <div class="form__options">
+               <div class="form__option">
+                  <input type="radio" id="3m" value="7" name="long-break" checked />
+                  <label for="10m">10 min</label>
+               </div>
+               <div class="form__option">
+                  <input type="radio" id="5m" value="20" name="long-break" />
+                  <label for="15m">15 min</label>
+               </div>
+            </div>
             <button class="form__button" id="startBtn" type="submit">Start</button>
          </form>
       </section>
       <section class="right container">
          <div class="right__wrapper">
-            <span class="right__counter" id="counter">00:00</span>
-            <button id="pauseBtn" disabled>Pause</button>
+            <div class="right__counter">
+               <span id="minutes">00</span>
+               <span id="seconds">00</span>
+            </div>
+            <button class="right__button" id="pauseBtn" disabled>Pause</button>
             <button id="resetBtn" disabled>Reset</button>
+         </div>
+      </section>
+
+      <section class="right-modal container hide" id="modal">
+         <div class="right-modal__wrapper">
+            <span class="right-modal__continue">Continue?</span>
+            <button class="right-modal__button" id="continueBtn">YES</button>
          </div>
       </section>
       <script src="index.js"></script>
