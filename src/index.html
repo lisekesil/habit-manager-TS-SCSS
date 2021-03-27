@@ -15,6 +15,8 @@
       <section class="left container">
          <h1 class="left__header">Pomodorro</h1>
 
+         <button class="left__reset-button" id="resetBtn" disabled>RESET</button>
+
          <form class="form">
             <span class="form__options-label">Session time:</span>
             <div class="form__options">
@@ -97,7 +99,6 @@
                <span id="seconds">00</span>
             </div>
             <button class="right__button" id="pauseBtn" disabled>PAUSE</button>
-            <button id="resetBtn" disabled>RESET</button>
          </div>
       </section>
 
@@ -105,6 +106,12 @@
          <div class="right-modal__wrapper">
             <span class="right-modal__continue">Continue?</span>
             <button class="right-modal__button" id="continueBtn">YES</button>
+            <audio src="./alarm.mp3" loop id="alarm"></audio>
+            <button class="clock" id="alarmBtn">
+               <svg class="clock__icon clock__icon--alarm">
+                  <use xlink:href="./icons/sprite.svg#alarm-clock"></use>
+               </svg>
+            </button>
          </div>
       </section>
       <script src="index.js"></script>

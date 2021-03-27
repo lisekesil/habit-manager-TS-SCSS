@@ -12,6 +12,8 @@ class App {
       minutes: HTMLSpanElement;
       seconds: HTMLSpanElement;
       modal: HTMLElement;
+      alarm: HTMLAudioElement;
+      alarmBtn: HTMLButtonElement;
    };
    interval: number;
    isPomodorroInProgress: boolean;
@@ -27,6 +29,8 @@ class App {
          minutes: document.querySelector('#minutes')!,
          seconds: document.querySelector('#seconds')!,
          modal: document.querySelector('#modal')!,
+         alarm: document.querySelector('#alarm')!,
+         alarmBtn: document.querySelector('#alarmBtn')!,
       };
 
       this.isPomodorroInProgress = false;
@@ -42,6 +46,7 @@ class App {
       this.ui.pauseBtn.addEventListener('click', () => this.handlePauseClick());
       this.ui.resetBtn.addEventListener('click', () => this.handleResetClick());
       this.ui.continueBtn.addEventListener('click', () => this.handleContinueClick());
+      this.ui.alarmBtn.addEventListener('click', () => this.stopAlarm());
    }
 
    toggleModal() {
@@ -63,6 +68,8 @@ class App {
       this.showTimer();
       this.interval = window.setInterval(() => {
          if (this.pomodorro.currentSeconds === 0) {
+            this.ui.alarm.play();
+            this.ui.alarmBtn.classList.remove('hide');
             this.toggleModal();
          }
          this.pomodorro.decrementSeconds();
@@ -97,6 +104,7 @@ class App {
       this.switchDisabledButtons();
       clearInterval(this.interval);
       this.isPaused = false;
+      this.ui.modal.classList.add('hide');
       this.ui.pauseBtn.innerHTML = this.isPaused ? 'UNPAUSE' : 'PAUSE';
       this.ui.minutes.innerHTML = '00';
       this.ui.seconds.innerHTML = '00';
@@ -105,6 +113,7 @@ class App {
    handleContinueClick() {
       // this.pauseUnpauseInterval();
       this.toggleModal();
+      this.stopAlarm();
    }
 
    switchDisabledButtons() {
@@ -113,6 +122,11 @@ class App {
       this.ui.startBtn.disabled = this.isPomodorroInProgress;
       this.ui.pauseBtn.disabled = !this.isPomodorroInProgress;
       this.ui.resetBtn.disabled = !this.isPomodorroInProgress;
+   }
+
+   stopAlarm() {
+      this.ui.alarm.pause();
+      this.ui.alarmBtn.classList.add('hide');
    }
 }
 
