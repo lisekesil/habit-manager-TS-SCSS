@@ -50,7 +50,7 @@
       width: 0;
 
       &:checked + .form__checkmark {
-         background-image: url('../icons/tomato-color.png');
+         background-image: url('./icons/tomato-color.png');
       }
    }
 
@@ -59,7 +59,7 @@
       width: 32px;
       margin-right: 8px;
 
-      background-image: url('../icons/tomato.png');
+      background-image: url('./icons/tomato.png');
       background-size: cover;
    }
 

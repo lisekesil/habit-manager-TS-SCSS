@@ -17,6 +17,7 @@ module.exports = {
          patterns: [
             { from: 'src/*.html', to: '[name][ext]' },
             { from: 'src/icons/*.png', to: 'icons/[name][ext]' },
+            { from: 'src/icons/*.svg', to: 'icons/[name][ext]' },
             { from: 'src/*.mp3', to: '[name][ext]' },
          ],
       }),
