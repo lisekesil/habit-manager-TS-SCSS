@@ -16,40 +16,78 @@
          <h1 class="left__header">Pomodorro</h1>
 
          <form class="form">
-            <span class="form__options-label">session time:</span>
+            <span class="form__options-label">Session time:</span>
             <div class="form__options">
-               <div class="form__option">
-                  <input type="radio" id="20m" value="20" name="time" checked />
-                  <label for="20m">20 min</label>
-               </div>
-               <div class="form__option">
-                  <input type="radio" id="25m" value="315" name="time" />
-                  <label for="25m">25 min</label>
-               </div>
+               <label class="form__option-container" for="20m">
+                  <input class="form__radio" type="radio" id="20m" value="20" name="time" />
+                  <span class="form__checkmark"></span>
+                  20 min
+               </label>
+
+               <label class="form__option-container" for="25m">
+                  <input class="form__radio" type="radio" id="25m" value="200" name="time" />
+                  <span class="form__checkmark"></span>
+                  25 min
+               </label>
+               <label class="form__option-container" for="25s">
+                  <input class="form__radio" type="radio" id="25s" value="25" name="time" checked />
+                  <span class="form__checkmark"></span>
+                  25 sec
+               </label>
             </div>
-            <span class="form__options-label">short break:</span>
+            <span class="form__options-label">Short break:</span>
             <div class="form__options">
-               <div class="form__option">
-                  <input type="radio" id="3m" value="7" name="short-break" checked />
-                  <label for="3m">3 min</label>
-               </div>
-               <div class="form__option">
-                  <input type="radio" id="5m" value="20" name="short-break" />
-                  <label for="5m">5 min</label>
-               </div>
+               <label class="form__option-container" for="3m">
+                  <input class="form__radio" type="radio" id="3m" value="3" name="short-break" />
+                  <span class="form__checkmark"></span>
+                  3 min
+               </label>
+
+               <label class="form__option-container" for="5m">
+                  <input class="form__radio" type="radio" id="5m" value="200" name="short-break" />
+                  <span class="form__checkmark"></span>
+                  5 min
+               </label>
+               <label class="form__option-container" for="5s">
+                  <input
+                     class="form__radio"
+                     type="radio"
+                     id="5s"
+                     value="5"
+                     name="short-break"
+                     checked
+                  />
+                  <span class="form__checkmark"></span>
+                  5 sec
+               </label>
             </div>
-            <span class="form__options-label">long break:</span>
+            <span class="form__options-label">Long break:</span>
             <div class="form__options">
-               <div class="form__option">
-                  <input type="radio" id="3m" value="7" name="long-break" checked />
-                  <label for="10m">10 min</label>
-               </div>
-               <div class="form__option">
-                  <input type="radio" id="5m" value="20" name="long-break" />
-                  <label for="15m">15 min</label>
-               </div>
+               <label class="form__option-container" for="10m">
+                  <input class="form__radio" type="radio" id="10m" value="10" name="long-break" />
+                  <span class="form__checkmark"></span>
+                  10 min
+               </label>
+
+               <label class="form__option-container" for="15m">
+                  <input class="form__radio" type="radio" id="15m" value="15" name="long-break" />
+                  <span class="form__checkmark"></span>
+                  15 min
+               </label>
+               <label class="form__option-container" for="15s">
+                  <input
+                     class="form__radio"
+                     type="radio"
+                     id="15s"
+                     value="15"
+                     name="long-break"
+                     checked
+                  />
+                  <span class="form__checkmark"></span>
+                  15 sec
+               </label>
             </div>
-            <button class="form__button" id="startBtn" type="submit">Start</button>
+            <button class="form__button" id="startBtn" type="submit">START</button>
          </form>
       </section>
       <section class="right container">
@@ -58,8 +96,8 @@
                <span id="minutes">00</span>
                <span id="seconds">00</span>
             </div>
-            <button class="right__button" id="pauseBtn" disabled>Pause</button>
-            <button id="resetBtn" disabled>Reset</button>
+            <button class="right__button" id="pauseBtn" disabled>PAUSE</button>
+            <button id="resetBtn" disabled>RESET</button>
          </div>
       </section>
 

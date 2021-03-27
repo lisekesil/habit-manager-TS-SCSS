@@ -90,12 +90,14 @@ class App {
 
    handlePauseClick() {
       this.pauseUnpauseInterval();
-      this.ui.pauseBtn.innerHTML = this.isPaused ? 'Unpause' : 'Pause';
+      this.ui.pauseBtn.innerHTML = this.isPaused ? 'UNPAUSE' : 'PAUSE';
    }
 
    handleResetClick() {
       this.switchDisabledButtons();
       clearInterval(this.interval);
+      this.isPaused = false;
+      this.ui.pauseBtn.innerHTML = this.isPaused ? 'UNPAUSE' : 'PAUSE';
       this.ui.minutes.innerHTML = '00';
       this.ui.seconds.innerHTML = '00';
    }
