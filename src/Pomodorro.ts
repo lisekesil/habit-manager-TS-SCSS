@@ -13,16 +13,16 @@ export default class Pomodorro {
    public minutes: number;
    public seconds: number;
 
-   constructor(sec: number) {
+   constructor(sessionSec: number, sBSec: number, lBSec: number) {
       this.config = {
-         sessionSeconds: sec,
-         shortBreakSeconds: 5,
-         longBreakSeconds: 15,
+         sessionSeconds: sessionSec,
+         shortBreakSeconds: sBSec,
+         longBreakSeconds: lBSec,
          longBreakStep: 3,
       };
       this.sessionCounter = 1;
       this.isBrake = false;
-      this.currentSeconds = sec;
+      this.currentSeconds = sessionSec;
    }
 
    setCurrentSeconds() {

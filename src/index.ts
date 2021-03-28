@@ -89,8 +89,18 @@ class App {
 
    handleStartClick(e: Event) {
       e.preventDefault();
-      const time = document.querySelector('input[name="time"]:checked') as HTMLInputElement;
-      this.pomodorro = new Pomodorro(parseInt(time.value));
+      const sessionTime = document.querySelector('input[name="time"]:checked') as HTMLInputElement;
+      const shortBTime = document.querySelector(
+         'input[name="short-break"]:checked',
+      ) as HTMLInputElement;
+      const longBTime = document.querySelector(
+         'input[name="long-break"]:checked',
+      ) as HTMLInputElement;
+      this.pomodorro = new Pomodorro(
+         parseInt(sessionTime.value),
+         parseInt(shortBTime.value),
+         parseInt(longBTime.value),
+      );
       this.switchDisabledButtons();
       this.startInterval();
    }
