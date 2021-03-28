@@ -5,6 +5,12 @@ interface IConfig {
    longBreakStep: number;
 }
 
+enum State {
+   SESSION = 'SESSION',
+   SHORTBREAK = 'SHORT BREAK',
+   LONGBREAK = 'LONG BREAK',
+}
+
 export default class Pomodorro {
    private config: IConfig;
    public currentSeconds: number;
@@ -12,6 +18,7 @@ export default class Pomodorro {
    public isBrake: boolean;
    public minutes: number;
    public seconds: number;
+   public state: State;
 
    constructor(sessionSec: number, sBSec: number, lBSec: number) {
       this.config = {
@@ -23,17 +30,21 @@ export default class Pomodorro {
       this.sessionCounter = 1;
       this.isBrake = false;
       this.currentSeconds = sessionSec;
+      this.state = State.SESSION;
    }
 
    setCurrentSeconds() {
       this.isBrake = !this.isBrake;
       if (this.isBrake) {
          if (this.sessionCounter % this.config.longBreakStep === 0) {
+            this.state = State.LONGBREAK;
             this.currentSeconds = this.config.longBreakSeconds;
          } else {
+            this.state = State.SHORTBREAK;
             this.currentSeconds = this.config.shortBreakSeconds;
          }
       } else {
+         this.state = State.SESSION;
          this.sessionCounter++;
          this.currentSeconds = this.config.sessionSeconds;
       }

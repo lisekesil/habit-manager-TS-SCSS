@@ -15,6 +15,7 @@ class App {
       alarm: HTMLAudioElement;
       alarmBtn: HTMLButtonElement;
       streak: HTMLSpanElement;
+      state: HTMLSpanElement;
    };
    interval: number;
    isPomodorroInProgress: boolean;
@@ -33,6 +34,7 @@ class App {
          alarm: document.querySelector('#alarm')!,
          alarmBtn: document.querySelector('#alarmBtn')!,
          streak: document.querySelector('#streak')!,
+         state: document.querySelector('#state')!,
       };
 
       this.isPomodorroInProgress = false;
@@ -53,19 +55,20 @@ class App {
 
    toggleModal() {
       this.pauseUnpauseInterval();
-      this.ui.modal.classList.toggle('hide');
+    
+    console.log(this.pomodorro.currentSeconds)  this.ui.modal.classList.toggle('hide');
    }
-
+   
    showTimer() {
       const min =
-         this.pomodorro.currentSeconds > 59 ? Math.floor(this.pomodorro.currentSeconds / 60) : 0;
-
+      this.pomodorro.currentSeconds > 59 ? Math.floor(this.pomodorro.currentSeconds / 60) : 0;
+      
       const sec = min === 0 ? this.pomodorro.currentSeconds : this.pomodorro.currentSeconds % 60;
-
+      
       this.ui.minutes.innerHTML = min > 9 ? min.toString() : `0${min}`;
       this.ui.seconds.innerHTML = sec > 9 ? sec.toString() : `0${sec}`;
    }
-
+   
    startInterval() {
       this.showTimer();
       this.ui.streak.innerHTML = this.pomodorro.sessionCounter.toString();
@@ -76,6 +79,8 @@ class App {
             this.toggleModal();
          }
          this.pomodorro.decrementSeconds();
+         console.log(this.pomodorro.currentSeconds)
+         this.ui.state.innerHTML = this.pomodorro.state;
          this.showTimer();
       }, 1000);
    }
@@ -126,7 +131,6 @@ class App {
    }
 
    handleContinueClick() {
-      // this.pauseUnpauseInterval();
       this.toggleModal();
       this.stopAlarm();
    }

@@ -1,0 +1,35 @@
+@import 'variables';
+
+.clock {
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
+   margin-top: 50px;
+   position: absolute;
+   bottom: -100px;
+
+   &__icon {
+      width: 50px;
+      height: 50px;
+      fill: #fff;
+      transition: fill 0.1s ease-in;
+
+      &--alarm {
+         fill: $secondary-color;
+         animation: shake 0.1s ease-in infinite;
+      }
+   }
+
+   &__icon:hover {
+      fill: #41b883;
+   }
+}
+
+@keyframes shake {
+   25% {
+      transform: translateX(-2px);
+   }
+   75% {
+      transform: translateX(2px);
+   }
+}
