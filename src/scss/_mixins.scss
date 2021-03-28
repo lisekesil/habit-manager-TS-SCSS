@@ -9,4 +9,10 @@
    padding: 10px 20px;
    cursor: pointer;
    outline: none;
+
+   @media (max-width: 600px) {
+      min-width: 80px;
+      font-size: 14px;
+      padding: 7px 15px;
+   }
 }

@@ -25,6 +25,14 @@
          font-size: 220px;
          border-bottom: 1px solid $secondary-color;
       }
+
+      @media (max-width: 600px) {
+         font-size: 140px;
+
+         #minutes {
+            font-size: 180px;
+         }
+      }
    }
 
    &__button {
