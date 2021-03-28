@@ -14,6 +14,7 @@ class App {
       modal: HTMLElement;
       alarm: HTMLAudioElement;
       alarmBtn: HTMLButtonElement;
+      streak: HTMLSpanElement;
    };
    interval: number;
    isPomodorroInProgress: boolean;
@@ -31,6 +32,7 @@ class App {
          modal: document.querySelector('#modal')!,
          alarm: document.querySelector('#alarm')!,
          alarmBtn: document.querySelector('#alarmBtn')!,
+         streak: document.querySelector('#streak')!,
       };
 
       this.isPomodorroInProgress = false;
@@ -66,6 +68,7 @@ class App {
 
    startInterval() {
       this.showTimer();
+      this.ui.streak.innerHTML = this.pomodorro.sessionCounter.toString();
       this.interval = window.setInterval(() => {
          if (this.pomodorro.currentSeconds === 0) {
             this.ui.alarm.play();
