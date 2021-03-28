@@ -101,20 +101,20 @@
             <button class="right__button" id="pauseBtn" disabled>PAUSE</button>
             <p class="right__streak">Session streak: <span id="streak">0</span></p>
          </div>
+         <section class="right-modal container hide" id="modal">
+            <div class="right-modal__wrapper">
+               <span class="right-modal__continue">Continue?</span>
+               <button class="right-modal__button" id="continueBtn">YES</button>
+               <audio src="./alarm.mp3" loop id="alarm"></audio>
+               <button class="clock" id="alarmBtn">
+                  <svg class="clock__icon clock__icon--alarm">
+                     <use xlink:href="./icons/sprite.svg#alarm-clock"></use>
+                  </svg>
+               </button>
+            </div>
+         </section>
       </section>
 
-      <section class="right-modal container hide" id="modal">
-         <div class="right-modal__wrapper">
-            <span class="right-modal__continue">Continue?</span>
-            <button class="right-modal__button" id="continueBtn">YES</button>
-            <audio src="./alarm.mp3" loop id="alarm"></audio>
-            <button class="clock" id="alarmBtn">
-               <svg class="clock__icon clock__icon--alarm">
-                  <use xlink:href="./icons/sprite.svg#alarm-clock"></use>
-               </svg>
-            </button>
-         </div>
-      </section>
       <script src="index.js"></script>
    </body>
 </html>
