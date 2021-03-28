@@ -116,11 +116,13 @@ class App {
    handleResetClick() {
       this.switchDisabledButtons();
       clearInterval(this.interval);
-      this.isPaused = false;
       this.ui.modal.classList.add('hide');
+      this.isPaused = false;
       this.ui.pauseBtn.innerHTML = this.isPaused ? 'UNPAUSE' : 'PAUSE';
       this.ui.minutes.innerHTML = '00';
       this.ui.seconds.innerHTML = '00';
+      this.ui.streak.innerHTML = '0';
+      this.ui.alarm.pause();
    }
 
    handleContinueClick() {
